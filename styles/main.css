@@ -205,7 +205,7 @@ span.bold {
 }
 
 .hover-target {
-    height: 13vh;
+    height: 10vh;
     object-fit: cover;
     width: 90%;
     background-image: url(/resources/qr.png); /* Замените на ваше изображение или цвет */ 
@@ -216,11 +216,11 @@ span.bold {
 }
 
 .hover-circle {
-    width: 10vw;
-    height: 10vw;
+    width: 13vw;
+    height: 13vw;
     border-radius: 50%;
     background-image: url('/resources/rzd_back.png'); /* Замените на ваш путь к изображению */
-    background-size: 1500%; /* Размер родительского элемента */
+    background-size: 1000%; /* Размер родительского элемента */
     background-repeat: repeat;
     position: absolute;
     pointer-events: none;
