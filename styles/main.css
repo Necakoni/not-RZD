@@ -69,26 +69,26 @@ span.size-20 {
 
 h1 {
     font-size: 6.5vw;
-    font-weight: 300;
+    font-weight: 350;
     margin: 0;
 }
 
 h2 {
     line-height: 3.5vh;
     font-size: 4.5vw;
-    font-weight: 400;
+    font-weight: 450;
 }
 
 h3 {
     line-height: 5vh;
     font-size: 4vw;
-    font-weight: 400;
+    font-weight: 450;
     margin: 0;
 }
 
 h4 {
     font-size: 3.3vw;
-    font-weight: 400;
+    font-weight: 450;
     margin: 0;
     line-height: 1.5em;
 }
@@ -96,14 +96,14 @@ h4 {
 h5 {
     margin: 0 0 1vh 0;
     color: var(--text-light-color);
-    font-weight: 400;
+    font-weight: 450;
     font-size: 2.2vw;
 }
 
 p {
     line-height: 3.2vh;
     font-size: 3.7vw;
-    font-weight: 300;
+    font-weight: 400;
     margin: 0 0 1vh 0;
 }
 
@@ -118,6 +118,7 @@ ul {
     width: 100%;
     font-size: 2.9vw;
     margin: 0;
+    font-weight: 500;
 }
 
 li {
@@ -175,19 +176,19 @@ span.straight {
 }
 
 span.bold {
-    font-weight: 450;
+    font-weight: 500;
 }
 
 .blue_arrow_box {
     display: flex;
-    width: 35vw;
+    width: 37vw;
     align-items: center;
     justify-content: space-evenly;
     text-transform: uppercase;
 }
 
 .arrow_down {
-    height: 8vh;
+    height: 10vh;
 }
 
 .qr_block {
@@ -241,7 +242,7 @@ button {
     color: var(--text-grey-color);
     font-size: 3.5vw;
     text-transform: uppercase;
-    font-weight: 550;
+    font-weight: 650;
     margin: 2vh 0 2vh 0
 }
 
@@ -261,7 +262,7 @@ aside {
 
 aside p, footer p  {
     font-size: 3.3vw;
-    font-weight: 400;
+    font-weight: 450;
     margin: 1.5vh 5vw;
 }
 
@@ -270,6 +271,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 4vh;
 }
 footer div{
     margin: 3vh 0 1vh 0;
@@ -321,7 +323,7 @@ footer div{
     }
 
     .screen_text_block p {
-        font-weight: 400;
+        font-weight: 450;
     }
 
     .screen_text_black {
@@ -336,7 +338,7 @@ footer div{
         color: red;
         margin: 0 2vh 0 0;
         text-transform: uppercase;
-        font-weight: 400;
+        font-weight: 450;
     }
 
     .screen_qr_block {
@@ -366,7 +368,7 @@ footer div{
         height: 8vh;
         border-radius: 4vw;
             font-size: 6vw;
-            font-weight: 600;
+            font-weight: 650;
             border: 0px;
             text-align: center;
         }
@@ -377,7 +379,7 @@ footer div{
         height: 8vh;
         border-radius: 4vw;
             font-size: 4vw;
-            font-weight: 600;
+            font-weight: 650;
             border: 0px;
             transition: background-color 0.3s;
         } 
