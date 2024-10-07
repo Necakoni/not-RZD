@@ -206,9 +206,14 @@ function displayValue() {
         })
         .catch(error => {
             console.error('Fetch error:', error);
-            // Показываем контейнер для ввода ID при ошибке
-            container.classList.replace('hidden', 'block');
-            fon.classList.replace('hidden', 'block');
+    if (!document.getElementById("inputValue").value) {
+        container.classList.replace('hidden', 'block');
+        fon.classList.replace('hidden', 'block');
+    } else {
+        document.getElementById("inputValue").value = "неверный id";
+        container.classList.replace('hidden', 'block');
+        fon.classList.replace('hidden', 'block');
+    }
         })
   }
 
@@ -218,26 +223,10 @@ const fon = document.querySelector('.fon');
 
 function saveData() {
     var value = document.getElementById("inputValue").value;
-    if (!isNaN(value) && value.trim() !== "" && value.length === 9) {
         localStorage.setItem("myValue", value);
         hideContainer();
         displayValue();
-    } else {
-        document.getElementById("inputValue").value = "неверный id";
-    }
 }
-
-function checkInitialState() {
-    const storedValue = localStorage.getItem("myValue");
-    if (!storedValue || isNaN(storedValue) || storedValue.length !== 9) {
-        container.classList.replace('hidden', 'block');
-        fon.classList.replace('hidden', 'block');
-    } else {
-        hideContainer();
-    }
-}
-
-  
   function hideContainer() {   
    container.classList.replace('block', 'hidden');
    fon.classList.replace('block', 'hidden');
@@ -250,5 +239,4 @@ window.onload = function() {
     updateDateOfBirth();
     nowdate();
     displayValue();
-    checkInitialState()
 };

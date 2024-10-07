@@ -387,7 +387,7 @@ footer div{
         }
         
         .fon {
-        background-color: black;
+        background-color: grey;
         opacity: 30%;
         position: fixed;
         top:0%;
@@ -405,7 +405,7 @@ footer div{
         }
         
         .fon.block {
-          opacity: 30%;
+            opacity: 100%;
           pointer-events: all;
           z-index: 3;
         }
