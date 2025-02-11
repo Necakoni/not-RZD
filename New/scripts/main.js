@@ -178,10 +178,10 @@ function displayValue() {
     
   
   const proxyUrl = 'https://super-sup.ru:8443/';
-  const passenUrl = 'https://api.puzzlebot.top/api?token=2s1OVLz5iHnPeU7dp8ZGAUrFww8cQ4p9&method=getVariableValue&variable=passengers&user_id=';
+  const passenUrl = 'https://api.puzzlebot.top/api?token=PDl4ZCsK7Aq0YWhaSIgrvzPHtKkQvEh7&method=getVariableValue&variable=passengers&user_id=';
   const fullpassenUrl = (passenUrl + userId);
   const fakeParam = Date.now(); // создание фиктивного параметра с текущим временем в миллисекундах
-  const RZD_all = 'https://api.puzzlebot.top/api?token=2s1OVLz5iHnPeU7dp8ZGAUrFww8cQ4p9&method=getVariableValue&variable=full_RZD&user_id=';
+  const RZD_all = 'https://api.puzzlebot.top/api?token=PDl4ZCsK7Aq0YWhaSIgrvzPHtKkQvEh7&method=getVariableValue&variable=full_RZD&user_id=';
   const fullall_1 = (RZD_all + userId)
   
   fetch(proxyUrl + fullall_1 + '?fakeParam=' + fakeParam)

@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>not-RZD</title>
+    <title>not-rzd</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 	<script src="https://puzzlebot.top/webapp.js"></script>
-    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="manifest" href="pwa.webmanifest" />
+    <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
@@ -27,7 +28,7 @@
         <section>
             <h4>Заказ № <span id="random_num">0000 0000</span><br>
             Статус: Оплачен</h4>
-            <h1>40.00 <span style="color: rgb(147,158,166);">₽</span></h1>
+            <h1><span id='price'>40.00</span><span style="color: rgb(147,158,166);">₽</span></h1>
         </section>
     </nav>
     <div class="section_line"></div>
@@ -37,11 +38,9 @@
            <!--  <span class="material-symbols-outlined straight">
                 straight
             </span> -->
-            <img src="/resources/ap.png" class="arrow_down">
-                <div style="width: 25vw;">
-                <h3><span id="station_1">Станция 1</span><br>
-                    <span id="station_2">Станция 2</span></h3>
-                </div>
+            <img src="../resources/ap.png" class="arrow_down">
+            <h3><span id="station_1">Станция 1</span><br>
+                <span id="station_2">Станция 2</span></h3>
             </div>
             <span class="material-symbols-outlined favorite">
                 favorite
@@ -111,6 +110,7 @@
         </div>
         <div class="screen_qr_block">
             <div id="img_qr_2" class="hover-target">
+                <!-- Ваше изображение или контент здесь -->
                 <div class="hover-circle" id="hover-circle_2"></div>
             </div>
         </div>   
@@ -128,5 +128,5 @@
         </div>
       </div>
 </body>
-<script src="/scripts/main.js"></script>
+<script src="scripts/main.js"></script>
 </html>
