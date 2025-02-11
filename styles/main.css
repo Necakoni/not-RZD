@@ -83,7 +83,7 @@ h3 {
     line-height: 5vh;
     font-size: 4vw;
     font-weight: 450;
-    margin: 0;
+    margin: 0 0 0 3vw;
 }
 
 h4 {
@@ -182,10 +182,11 @@ span.bold {
 
 .blue_arrow_box {
     display: flex;
-    width: 37vw;
+    width: 70vw;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     text-transform: uppercase;
+    margin: 0 0 0 3vw;
 }
 
 .arrow_down {
