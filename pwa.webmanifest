@@ -12,7 +12,7 @@
       }
     ],
   
-    "start_url": "/New/index.html",
+    "start_url": "/pwa.html",
     "display": "fullscreen",
     "background_color": "#ffffff",
     "theme_color": "#000000",
