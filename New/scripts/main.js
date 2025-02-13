@@ -18,24 +18,24 @@ function updateRandomNumbers() {
     document.getElementById('electronic_document').innerText = `${randomNum3} ${randomNum4}`;
 }
 
-// Функция для генерации случайной даты рождения
-function generateRandomDateOfBirth() {
-    const start = new Date(1990, 0, 1); // 1 января 1990
-    const end = new Date(2005, 11, 31); // 31 декабря 2005
-    const randomDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+// // Функция для генерации случайной даты рождения
+// function generateRandomDateOfBirth() {
+//     const start = new Date(1990, 0, 1); // 1 января 1990
+//     const end = new Date(2005, 11, 31); // 31 декабря 2005
+//     const randomDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
     
-    const day = String(randomDate.getDate()).padStart(2, '0');
-    const month = String(randomDate.getMonth() + 1).padStart(2, '0'); // Месяцы в JS начинаются с 0
-    const year = randomDate.getFullYear();
+//     const day = String(randomDate.getDate()).padStart(2, '0');
+//     const month = String(randomDate.getMonth() + 1).padStart(2, '0'); // Месяцы в JS начинаются с 0
+//     const year = randomDate.getFullYear();
     
-    return `${day}.${month}.${year}`;
-}
+//     return `${day}.${month}.${year}`;
+// }
 
-// Функция для обновления даты рождения на странице
-function updateDateOfBirth() {
-    const dateOfBirth = generateRandomDateOfBirth();
-    document.getElementById('date_of_birth').innerText = dateOfBirth;
-}
+// // Функция для обновления даты рождения на странице
+// function updateDateOfBirth() {
+//     const dateOfBirth = generateRandomDateOfBirth();
+//     document.getElementById('date_of_birth').innerText = dateOfBirth;
+// }
 
 // Обновление даты на странице
 function nowdate() {
@@ -191,17 +191,24 @@ function displayValue() {
     let station_1 = variables[0];
     let station_2 = variables[1];
     let full_name = variables[2];
+    let dateOfBirth = variables[3];
 
-    console.log(station_1, station_2, full_name);
+    console.log(station_1, station_2, full_name, dateOfBirth);
 
+    //  вставляем первую станцию
     let data_elements = document.querySelectorAll('#station_1, #station_1_duble, #station_1_triple, #station_1_qr');
     data_elements.forEach(element => element.textContent = station_1);
 
+    // вставляем вторую станцию
     let second_data_elements = document.querySelectorAll('#station_2, #station_2_duble, #station_2_qr');
     second_data_elements.forEach(element => element.textContent = station_2);
 
+    // вставляем имя пассажира 
     let full_name_data_elements = document.querySelectorAll('#passanger, #passanger_duble')
     full_name_data_elements.forEach(element =>  element.textContent = full_name);
+
+    // вставляем дату рождения пассажира
+    document.getElementById('date_of_birth').innerText = dateOfBirth;
     
     // список цен
 const priceMap = {
@@ -325,7 +332,7 @@ function saveData() {
 // Вызов функции обновления при загрузке страницы
 window.onload = function() {
     updateRandomNumbers();
-    updateDateOfBirth();
+    // updateDateOfBirth();
     nowdate();
     displayValue();
 };
