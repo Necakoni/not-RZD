@@ -1,6 +1,11 @@
 // получаем список цен
 
-import { priceMap } from '/New/scripts/prices.js';
+// Предполагаем, что эти priceMap уже импортированы
+import { priceMap_lysva } from '/New/scripts/prices_lysva.js';
+import { priceMap_balesino } from '/New/scripts/prices_balesino.js';
+import { priceMap_chusovoi } from '/New/scripts/prices.js';  // Основной priceMap
+
+
 
 // Функция для генерации случайного четырехзначного числа
 function generateRandomFourDigitNumber() {
@@ -196,8 +201,9 @@ function displayValue() {
     let station_2 = variables[1];
     let full_name = variables[2];
     let dateOfBirth = variables[3];
+    let marshrut = variables[4];
 
-    console.log(station_1, station_2, full_name, dateOfBirth);
+    console.log(station_1, station_2, full_name, dateOfBirth, marshrut);
 
     //  вставляем первую станцию
     let data_elements = document.querySelectorAll('#station_1, #station_1_duble, #station_1_triple, #station_1_qr');
@@ -216,22 +222,42 @@ function displayValue() {
     
   
   // функция для получения цены
-  function getPrice(station1, station2) {
-    if (station1 === station2) {
-      return 0; // или любая другая логика для одинаковых станций
-    }
-    const price = priceMap[station1] && priceMap[station1][station2];
-    if (!price) {
-      const reversePrice = priceMap[station2] && priceMap[station2][station1];
-      return reversePrice || 40;
-    }
-    return price;
-  }
-  
-  // вставляем цены в id=price
-  const price = getPrice(station_1, station_2);
-  document.getElementById('price').innerText = price.toFixed(2);
+// Функция для получения цены в зависимости от выбранного маршрута
+function getPrice(station1, station2, marshrut) {
+    let priceMap;
 
+    // Определяем нужную карту цен в зависимости от маршрута
+    if (marshrut === "chusovoi") {
+        priceMap = priceMap_chusovoi;
+    } else if (marshrut === "lysva") {
+        priceMap = priceMap_lysva;
+    } else if (marshrut === "balesino") {
+        priceMap = priceMap_balesino;
+    } else {
+        return 40; // Если маршрут не совпадает, возвращаем дефолтную цену
+    }
+
+    // Логика для одинаковых станций
+    if (station1 === station2) {
+        return 0; // Или любая другая логика для одинаковых станций
+    }
+
+    // Получаем цену для выбранных станций
+    const price = priceMap[station1] && priceMap[station1][station2];
+    
+    if (!price) {
+        // Если цены нет в одном направлении, проверяем в обратном
+        const reversePrice = priceMap[station2] && priceMap[station2][station1];
+        return reversePrice || 40; // Если цены нет в обратном направлении, возвращаем дефолтную цену
+    }
+
+    return price;
+}
+
+  // вставляем цены в id=price
+  const price = getPrice(station_1, station_2, marshrut);
+  document.getElementById('price').innerText = price.toFixed(2);
+  
         })
         .catch(error => {
             console.error('Fetch error:', error);
@@ -268,5 +294,7 @@ window.onload = function() {
     // updateDateOfBirth();
     nowdate();
     displayValue();
+    // Add event listener for save button
+    document.getElementById('saveButton').addEventListener('click', saveData);
 };
   
