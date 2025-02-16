@@ -1,9 +1,7 @@
 // получаем список цен
 
 // Предполагаем, что эти priceMap уже импортированы
-import { priceMap_lysva } from '/New/scripts/prices_lysva.js';
-import { priceMap_balesino } from '/New/scripts/prices_balesino.js';
-import { priceMap_chusovoi } from '/New/scripts/prices.js';  // Основной priceMap
+import { priceMap_all } from '/New/scripts/prices_updated.js';  // Основной priceMap
 
 
 
@@ -223,40 +221,52 @@ function displayValue() {
   
   // функция для получения цены
 // Функция для получения цены в зависимости от выбранного маршрута
-function getPrice(station1, station2, marshrut) {
-    let priceMap;
+function getPrice(station1, station2) {
+    let priceMap = priceMap_all;
 
     // Определяем нужную карту цен в зависимости от маршрута
-    if (marshrut === "chusovoi") {
-        priceMap = priceMap_chusovoi;
-    } else if (marshrut === "lysva") {
-        priceMap = priceMap_lysva;
-    } else if (marshrut === "balesino") {
-        priceMap = priceMap_balesino;
-    } else {
-        return 40; // Если маршрут не совпадает, возвращаем дефолтную цену
-    }
+    // if (marshrut === "chusovoi") {
+    //     priceMap = priceMap_chusovoi;
+    // } else if (marshrut === "lysva") {
+    //     priceMap = priceMap_lysva;
+    // } else if (marshrut === "balesino") {
+    //     priceMap = priceMap_balesino;
+    // } else {
+    //     return 40; // Если маршрут не совпадает, возвращаем дефолтную цену
+    // }
 
-    // Логика для одинаковых станций
-    if (station1 === station2) {
-        return 0; // Или любая другая логика для одинаковых станций
-    }
+    // // Логика для одинаковых станций
+    // if (station1 === station2) {
+    //     return 0; // Или любая другая логика для одинаковых станций
+    // }
 
     // Получаем цену для выбранных станций
-    const price = priceMap[station1] && priceMap[station1][station2];
-    
+
+    const priceMapLower = {};
+    Object.keys(priceMap).forEach(key => {
+    priceMapLower[key.toLowerCase()] = {};
+    Object.keys(priceMap[key]).forEach(subKey => {
+        priceMapLower[key.toLowerCase()][subKey.toLowerCase()] = priceMap[key][subKey];
+    });
+    });
+
+    const station1Lower = station1.toLowerCase();
+    const station2Lower = station2.toLowerCase();
+
+    const price = priceMapLower[station1Lower] && priceMapLower[station1Lower][station2Lower];
+
     if (!price) {
-        // Если цены нет в одном направлении, проверяем в обратном
-        const reversePrice = priceMap[station2] && priceMap[station2][station1];
-        return reversePrice || 40; // Если цены нет в обратном направлении, возвращаем дефолтную цену
+    // Если цены нет в одном направлении, проверяем в обратном
+    const reversePrice = priceMapLower[station2Lower] && priceMapLower[station2Lower][station1Lower];
+    return reversePrice || 40; // Если цены нет в обратном направлении, возвращаем дефолтную цену
     }
 
     return price;
 }
 
   // вставляем цены в id=price
-  const price = getPrice(station_1, station_2, marshrut);
-  document.getElementById('price').innerText = price.toFixed(2);
+  const price = getPrice(station_1, station_2);
+  document.getElementById('price').innerText = price + ".00";
   
         })
         .catch(error => {
