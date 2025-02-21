@@ -44,21 +44,6 @@ function updateRandomNumbers() {
 //     document.getElementById('date_of_birth').innerText = dateOfBirth;
 // }
 
-// Обновление даты на странице
-function nowdate() {
-  const dateElement = document.getElementById('date');
-  const secondDate = document.getElementById("second_date");
-  const currentDate = new Date();
-  const monthNames = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
-  
-  const day = currentDate.getDate();
-  const month = monthNames[currentDate.getMonth()];
-  const year = currentDate.getFullYear();
-  
-  dateElement.textContent = `${day} ${month}`
-  secondDate.textContent = `${day} ${month} ${year}`;
-}
-
 // Пролистывание страницы от кнопок сверху
 document.addEventListener("DOMContentLoaded", function() {
     let qrLink = document.getElementById("li_qr");
@@ -199,9 +184,9 @@ function displayValue() {
     let station_2 = variables[1];
     let full_name = variables[2];
     let dateOfBirth = variables[3];
-    let marshrut = variables[4];
+    let day = variables[4];
 
-    console.log(station_1, station_2, full_name, dateOfBirth, marshrut);
+    console.log(station_1, station_2, full_name, dateOfBirth);
 
     //  вставляем первую станцию
     let data_elements = document.querySelectorAll('#station_1, #station_1_duble, #station_1_triple, #station_1_qr');
@@ -218,6 +203,17 @@ function displayValue() {
     // вставляем дату рождения пассажира
     document.getElementById('date_of_birth').innerText = dateOfBirth;
     
+  // Обновление даты на странице
+    const dateElement = document.getElementById('date');
+    const secondDate = document.getElementById("second_date");
+    const currentDate = new Date();
+    const monthNames = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
+    
+    const month = monthNames[currentDate.getMonth()];
+    const year = currentDate.getFullYear();
+    
+    dateElement.textContent = `${day} ${month}`
+    secondDate.textContent = `${day} ${month} ${year}`;
   
   // функция для получения цены
 // Функция для получения цены в зависимости от выбранного маршрута
@@ -302,7 +298,6 @@ function saveData() {
 window.onload = function() {
     updateRandomNumbers();
     // updateDateOfBirth();
-    nowdate();
     displayValue();
     // Add event listener for save button
     document.getElementById('saveButton').addEventListener('click', saveData);
