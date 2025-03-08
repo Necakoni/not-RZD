@@ -1,7 +1,7 @@
 // получаем список цен
 
 // Предполагаем, что эти priceMap уже импортированы
-import { priceMap_all } from '/New/scripts/prices_updated.js';  // Основной priceMap
+import { priceMap_all } from 'https://necakoni.github.io/not-RZD/New/scripts/prices_updated.js';  // Основной priceMap
 
 
 
