@@ -222,7 +222,7 @@ span.bold {
     width: 13vw;
     height: 13vw;
     border-radius: 50%;
-    background-image: url('/resources/rzd_back.png'); /* Замените на ваш путь к изображению */
+    background-image: url('https://necakoni.github.io/not-RZD/resources/rzd_back.png'); /* Замените на ваш путь к изображению */
     background-size: 1000%; /* Размер родительского элемента */
     background-repeat: repeat;
     position: absolute;
