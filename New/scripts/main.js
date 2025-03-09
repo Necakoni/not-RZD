@@ -206,14 +206,19 @@ function displayValue() {
   // Обновление даты на странице
     const dateElement = document.getElementById('date');
     const secondDate = document.getElementById("second_date");
+    const back_date = document.getElementById("back_date");
     const currentDate = new Date();
     const monthNames = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
     
     const month = monthNames[currentDate.getMonth()];
     const year = currentDate.getFullYear();
+    const day_num = currentDate.getDate();
+    const month_num = currentDate.getMonth();
+    
     
     dateElement.textContent = `${day} ${month}`
     secondDate.textContent = `${day} ${month} ${year}`;
+    back_date.textContent = `${String(day_num).padStart(2, '0')}.${String(month_num + 1).padStart(2, '0')}.${year}`;
   
   // функция для получения цены
 // Функция для получения цены в зависимости от выбранного маршрута
@@ -293,6 +298,24 @@ function saveData() {
    fon.classList.replace('block', 'hidden');
 }
 
+function formatTime(date) {
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    return `${hours}:${minutes}`;
+}
+
+// Функция обновления времени
+function updateTime() {
+    const now = new Date();
+    const timeElement = document.getElementById('now_time');
+    if (timeElement) {
+        timeElement.textContent = formatTime(now);
+    }
+}
+
+// Первый запуск и установка интервала
+updateTime();
+setInterval(updateTime, 60000); // Обновление каждую минуту
 
 // Вызов функции обновления при загрузке страницы
 window.onload = function() {

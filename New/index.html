@@ -7,7 +7,7 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 	<script src="https://puzzlebot.top/webapp.js"></script>
     <link rel="manifest" href="pwa.webmanifest" />
-    <link rel="stylesheet" href="https://necakoni.github.io/not-RZD/styles/main.css">
+    <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
@@ -61,11 +61,24 @@
             <p>Штрих-код</p>
             <h5>Полный от <span id="station_1_qr">Станция 1</span> до <span id="station_2_qr">Станция 2</span></h5>
             <div class="qr_block">
-                <div id="img_qr" class="hover-target">
-                    <!-- Ваше изображение или контент здесь -->
-                    <div class="hover-circle" id="hover-circle"></div>
+                <div id="img_qr">
+                    <div class="flip-inner">
+                        <div class="qr-front">
+                            <!-- Ваш исходный контент QR-кода -->
+                            <div class="hover-target">
+                                <div class="hover-circle" id="hover-circle"></div>
+                            </div>
+                        </div>
+                        <div class="qr-back">
+                            <div class="back_text">
+                            <p>Дата <br><span id="back_date"></span></p>
+                            <p>Время <br><span id="now_time"></span></p>
+                            <p>Тип билета: <br><span id="full">Полный</span></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            <button id="fullscreen">Развернуть на весь экран</button>
+                <button id="fullscreen">Развернуть на весь экран</button>
             </div>
         </section>
         <div class="section_line"></div>
@@ -128,5 +141,10 @@
         </div>
       </div>
 </body>
-<script src="https://necakoni.github.io/not-RZD/New/scripts/main.js" type="module"></script>
+<script>
+    document.getElementById('img_qr').addEventListener('click', function() {
+        this.querySelector('.flip-inner').classList.toggle('flipped');
+    });
+    </script>
+<script src="/New/scripts/main.js" type="module"></script>
 </html>
